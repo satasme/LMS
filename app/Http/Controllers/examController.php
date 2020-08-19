@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-Use App\Course;
+
+use App\Course;
 use App\coursetest;
 use App\exam;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class examController extends Controller
 {
@@ -21,8 +23,8 @@ class examController extends Controller
         $coursetests = coursetest::all();
         $exams = exam::all();
         //$papercategories= PaperCategory::all();
-       // $quizes=quiz::all();
-        return view("admin.exam",compact('courses','coursetests','exams'));
+        // $quizes=quiz::all();
+        return view("admin.exam", compact('courses', 'coursetests', 'exams'));
     }
 
     /**
@@ -38,7 +40,7 @@ class examController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -58,7 +60,7 @@ class examController extends Controller
         $new_name = date('YmdHis') . "." . $image->getClientOriginalExtension();
 
         $image->move(public_path('/images/'), $new_name);
-        $form_data=array(
+        $form_data = array(
             'examcode' => $request->examcode,
             'Exam_title' => $request->Exam_title,
             'description' => $request->description,
@@ -69,21 +71,19 @@ class examController extends Controller
             'coursetestname' => $request->coursetestname,
 
 
-            
-
         );
-  
-       // CourseMode::create($form_data);
-  
+
+        // CourseMode::create($form_data);
+
         exam::create($form_data);
-   
+
         return redirect('admin/home/exams');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -94,7 +94,7 @@ class examController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -105,8 +105,8 @@ class examController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -117,11 +117,21 @@ class examController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
     }
+
+    public function get_exam_of_course_course_set_id($course_id, $course_set_id)
+    {
+        return DB::table('exam')
+            ->select('*')
+            ->where('courseid', '=', $course_id)
+            ->where('coursetestid', '=', $course_set_id)
+            ->get();
+    }
+
 }

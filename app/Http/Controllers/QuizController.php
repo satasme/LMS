@@ -9,6 +9,7 @@ use App\exam;
 use App\coursetest;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class QuizController extends Controller
 {
@@ -62,9 +63,9 @@ class QuizController extends Controller
             'papercatid' => 'required',
 
         ]);
-  
+
         quiz::create($request->all());
-   
+
         return redirect('admin/home/quizes');
     }
 
@@ -113,7 +114,7 @@ class QuizController extends Controller
             'time'  => 'required',
             'papercatid' => 'required',
         ]);
-  
+
         $quize->update($request->all());
         return redirect('admin/home/quizes');
     }
@@ -130,4 +131,15 @@ class QuizController extends Controller
         $quize->delete();
         return redirect('admin/home/quizes');
     }
+
+    public function get_quizzes_of_course_course_set_exam_paper_cat_id($course_id,$course_set_id,$exam_id,$paper_cat_id){
+        return DB::table('quizes')
+            ->select('*')
+            ->where('courseid','=',$course_id)
+            ->where('coursetestid','=',$course_set_id)
+            ->where('examid','=',$exam_id)
+            ->where('papercatid','=',$paper_cat_id)
+            ->get();
+    }
+
 }
