@@ -127,6 +127,8 @@ class examController extends Controller
 
     public function get_exam_of_course_course_set_id($course_id, $course_set_id)
     {
+
+
         return DB::table('exam')
             ->select('*')
             ->where('courseid', '=', $course_id)
