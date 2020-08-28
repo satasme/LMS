@@ -483,14 +483,14 @@
                     // alert("something");
                     // $("#cover").fadeOut(100);
 
-                    var timeleft = 1;
+                    var timeleft = 10;
                     var downloadTimer = setInterval(function () {
                         if (timeleft <= 0) {
                             clearInterval(downloadTimer);
 
                             $("#cover").fadeOut(100);
 
-                            var fiveMinutes = 60 * 20,
+                            var fiveMinutes = 60 * 60,
                                 display = document.querySelector('#timerId');
                             startTimer(fiveMinutes, display);
 

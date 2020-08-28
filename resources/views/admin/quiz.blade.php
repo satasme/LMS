@@ -15,7 +15,7 @@
     </div>
     <!-- preloader area end -->
     <!-- page container area start -->
-    
+
     <div class="page-container">
         <!-- sidebar menu area start -->
         <div class="sidebar-menu">
@@ -26,34 +26,8 @@
                 </div>
             </div>
             <div class="main-menu">
-                <div class="menu-inner">
-                    <nav>
-                        <ul class="metismenu" id="menu">
-                        <li><a href="{{ url('admin/home') }}"><i class="ti-map-alt"></i> <span>Home</span></a></li>
-
-                            <li class="active">
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>Courses</span></a>
-                                <ul class="collapse">
-                                    <li><a href="{{ url('admin/home/courses') }}">Register Courses</a></li>
-                                    <li><a href="{{ url('admin/home/paper-categories') }}">All Paper categories</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Quiz
-                                    </span></a>
-                                <ul class="collapse">
-                                    <li><a href="index.html">Add Mcq Quize</a></li>
-                                    <li><a href="index3-horizontalmenu.html">Manage mcq quize</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="invoice.html"><i class="ti-receipt"></i> <span>Instructors</span></a></li>
-                            <li><a href="invoice.html"><i class="ti-receipt"></i> <span>Teachers</span></a></li>
-
-                            
-                            
-                               
-                        </ul>
-                    </nav>
+                <div class="main-menu">
+                    @include('admin.partials.mainmenu')
                 </div>
             </div>
         </div>
@@ -64,7 +38,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
-                            
+
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.html">Home</a></li>
                                 <li><span>courses</span></li>
@@ -92,11 +66,11 @@
             </div>
             </div>
             <div id="reg-form" class="course-registration-form">
-            
+
             <h4 style="padding-left: 8%; padding-top:2%;font-family:Arial;font-weight:600 !important;">Add New Quiz</h4>
             <a class="close" href="#">&times;</a>
             </br>
-            
+
             @if ($errors->any())
     <div class="alert alert-danger">
         <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -107,7 +81,7 @@
         </ul>
         </div>
 
-        
+
 
          @endif
               <form class="add-form" method="post" action="{{ route('quizes.store') }}" enctype='multipart/form-data' >
@@ -140,7 +114,7 @@
        <label>Course Test</label>
 
        <select class="form-control coursemodedropdown" name="coursetestid" class="form-control">
-       
+
       @foreach($coursetests as $coursetest)
 
          <option value="{{ $coursetest->id }}">{{ $coursetest->test_title }}</option>
@@ -157,12 +131,12 @@
                                        <option value="{{ $exam->id }}">{{ $exam->Exam_title }}</option>
                                      @endforeach
 
-                                     
+
                     </select>
               </div>
-              
-    
-  
+
+
+
 
   <div class="form-group">
   <label>Paper Category</label>
@@ -182,7 +156,7 @@
                 </div>
 
   <button type="submit" class="btn btn-primary mb-2">submit</button>
- 
+
                </form>
 
 
@@ -209,7 +183,7 @@
         </tr>
       </thead>
         <tbody>
- 
+
         @foreach ($quizes as $quiz)
         <tr class="data-row">
             <td style="display:none;" class="align-middle quizid">{{ $quiz->id }}</td>
@@ -226,38 +200,38 @@
             <th style="display:none">{{ $quiz->papercatid }}</th>
 
             <td width="60%" class="align-middle" >
-                
-   
+
+
                     <a id="edit-item" class="btn btn-primary edit" >Edit</a>
-                    
+
                    <form style="float:right;" method="post" action="{{ route('quizes.destroy',$quiz->id) }}">
                       @csrf
                       @method('DELETE')
                        <button type="submit" class="btn btn-danger delete-btn" >Delete</button>
                     </form>
-                    
-                    
-               
+
+
+
             </td>
         </tr>
         @endforeach
-       
-       
-        
+
+
+
      </tbody>
     </table>
 
             </div>
 
-            
+
             </div>
 
             <div id="edit-model2" class="modal-body">
-            
+
             <h4 style="padding-left: 8%; padding-top:2%;font-family:Arial;font-weight:600 !important;">update Quizes</h4>
             <a class="close" href="#">&times;</a>
             </br>
-            
+
             @if ($errors->any())
     <div class="alert alert-danger">
         <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -268,7 +242,7 @@
         </ul>
         </div>
 
-        
+
 
          @endif
               <form id="update-form" class="update-form" method="post" action="/paper-categories" enctype="multipart/form-data">
@@ -298,7 +272,7 @@
        <label>Course Test</label>
 
        <select class="form-control coursetestdropdown" name="coursetestid" class="form-control">
-       
+
       @foreach($coursetests as $coursetest)
 
          <option value="{{ $coursetest->id }}">{{ $coursetest->test_title }}</option>
@@ -315,12 +289,12 @@
                                        <option value="{{ $exam->id }}">{{ $exam->Exam_title }}</option>
                                      @endforeach
 
-                                     
+
                     </select>
               </div>
-              
-    
-  
+
+
+
 
   <div class="form-group">
   <label>Paper Category</label>
@@ -340,8 +314,8 @@
                 </div>
 
   <button type="submit" class="btn btn-primary mb-2">Update</button>
- 
- 
+
+
                </form>
 
 
@@ -349,16 +323,16 @@
             </div>
 
 
-      
+
     </div>
   </div>
 </div>
-            
+
         </div>
         <!-- main content area end -->
         <!-- footer area start-->
 
-       
+
 
         <footer>
             <div class="footer-area">
@@ -369,7 +343,7 @@
     </div>
     <!-- page container area end -->
     <!-- offset area start -->
-   
+
     @section('js')
     <script src="{{ asset('vendor\unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
     <script>

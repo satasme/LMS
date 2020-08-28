@@ -15,7 +15,7 @@
     </div>
     <!-- preloader area end -->
     <!-- page container area start -->
-    
+
     <div class="page-container">
         <!-- sidebar menu area start -->
         <div class="sidebar-menu">
@@ -27,41 +27,7 @@
                 </div>
             </div>
             <div class="main-menu">
-                <div class="menu-inner">
-                    <nav>
-                        <ul class="metismenu" id="menu">
-                        <li><a href="{{ url('admin/home') }}"><i class="ti-map-alt"></i> <span>Home</span></a></li>
-
-                            <li class="active">
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>Courses</span></a>
-                                <ul class="collapse">
-                                    <li><a href="{{ url('admin/home/courses') }}">Register Courses</a></li>
-                                    <li><a href="{{ url('admin/home/paper-categories') }}">All Paper categories</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Quiz
-                                    </span></a>
-                                <ul class="collapse">
-                                <li><a href="{{ url('admin/home/mcqquizes') }}">Add Mcq Quize</a></li>
-                                        <li><a href="index3-horizontalmenu.html">Manage mcq quize</a></li>
-                                        <li><a href="{{ url('admin/home/fillingblanks') }}">Add Filling Blanks Quize</a></li>
-                                        <li><a href="{{ url('admin/home/managefillingblanks') }}">Manage Filling Blanks Quizes</a></li>
-                                    
-                                        <li><a href="{{ url('Admin/short_answer_model') }}">Short answer Quizes</a></li>
-                                    <!-- <li><a href="index.html">Add Quize</a></li>
-                                    <li><a href="index3-horizontalmenu.html">Manage Quize</a></li> -->
-                                </ul>
-                            </li>
-                            <li><a href="invoice.html"><i class="ti-receipt"></i> <span>Instructors</span></a></li>
-                            <li><a href="invoice.html"><i class="ti-receipt"></i> <span>Teachers</span></a></li>
-
-                            
-                            
-                               
-                        </ul>
-                    </nav>
-                </div>
+                @include('admin.partials.mainmenu')
             </div>
         </div>
         <!-- sidebar menu area end -->
@@ -71,7 +37,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
-                            
+
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.html">Home</a></li>
                                 <li><span>courses</span></li>
@@ -99,11 +65,11 @@
             </div>
             </div>
             <div id="reg-form" class="course-registration-form">
-            
+
             <h4 style="padding-left: 8%; padding-top:2%;font-family:Arial;font-weight:600 !important;">Add New Course</h4>
             <a class="close" href="#">&times;</a>
             </br>
-            
+
             @if ($errors->any())
     <div class="alert alert-danger">
         <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -114,7 +80,7 @@
         </ul>
         </div>
 
-        
+
 
          @endif
               <form class="add-form" method="post" action="{{ route('papercategories.store') }}" enctype='multipart/form-data' >
@@ -133,13 +99,13 @@
     <label for="exampleFormControlTextarea1"> Description</label>
     <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
-    
+
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Icon </label>
     <input type="file" name="icon" class="form-control" id="icon" />
   </div>
   <button type="submit" class="btn btn-primary mb-2">submit</button>
- 
+
                </form>
 
 
@@ -169,37 +135,37 @@
             <td class="align-middle modeDescription">{{ $papercategory->description }}</td>
            <td  style="display:none"class="align-middle icon">{{ $papercategory->icon }}</td>
             <td class="align-middle" >
-                
-   
+
+
                     <a id="edit-item" class="btn btn-primary edit" >Edit</a>
-                    
+
                    <form style="float:right;" method="post" action="{{ route('papercategories.destroy',$papercategory->id) }}">
                       @csrf
                       @method('DELETE')
                        <button type="submit" class="btn btn-danger delete-btn" >Delete</button>
                     </form>
-                    
-               
+
+
             </td>
         </tr>
         @endforeach
 
-        
-        
+
+
      </tbody>
     </table>
 
             </div>
 
-            
+
             </div>
 
             <div id="edit-model2" class="modal-body">
-            
+
             <h4 style="padding-left: 8%; padding-top:2%;font-family:Arial;font-weight:600 !important;">update Course</h4>
             <a class="close" href="#">&times;</a>
             </br>
-            
+
             @if ($errors->any())
     <div class="alert alert-danger">
         <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -210,7 +176,7 @@
         </ul>
         </div>
 
-        
+
 
          @endif
               <form id="update-form" class="update-form" method="post" action="/paper-categories" enctype="multipart/form-data">
@@ -226,17 +192,17 @@
     <label for="exampleFormControlTextarea1"> Description</label>
     <textarea name="description" class="form-control" id="description" rows="3"></textarea>
   </div>
-    
+
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Icon </label>
     <input type="file" name="icon" class="form-control" id="icon-img" />
     <div id="imagehere"></div>
     <input type="hidden" name="hidden_image" id="hidden_image" />
-    
+
   </div>
   <button type="submit" class="btn btn-primary mb-2">Update</button>
- 
- 
+
+
                </form>
 
 
@@ -244,16 +210,16 @@
             </div>
 
 
-      
+
     </div>
   </div>
 </div>
-            
+
         </div>
         <!-- main content area end -->
         <!-- footer area start-->
 
-       
+
 
         <footer>
             <div class="footer-area">
@@ -264,7 +230,7 @@
     </div>
     <!-- page container area end -->
     <!-- offset area start -->
-   
+
     @section('js')
     <script src="{{ asset('vendor\unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
     <script>

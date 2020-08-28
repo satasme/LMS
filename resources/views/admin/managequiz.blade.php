@@ -25,35 +25,8 @@
                 </div>
             </div>
             <div class="main-menu">
-                <div class="menu-inner">
-                    <nav>
-                        <ul class="metismenu" id="menu">
-                        <li><a href="{{ url('admin/home') }}"><i class="ti-map-alt"></i> <span>Home</span></a></li>
-
-                            <li class="active">
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>Courses</span></a>
-                                <ul class="collapse">
-                                  <li><a href="{{ url('admin/home/courses') }}">Register Courses</a></li>
-                                    <li><a href="{{ url('admin/home/paper-categories') }}">Add Course Modes</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Quiz
-                                    </span></a>
-                                <ul class="collapse">
-                                    <li><a href="{{ url('admin/home/mcqquizes') }}">Add Quize</a></li>
-                                    <li><a href="index3-horizontalmenu.html">Manage Quize</a></li>
-                                    <li><a href="">Add Filling Blanks Quize</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="invoice.html"><i class="ti-receipt"></i> <span>Instructors</span></a></li>
-                            <li><a href="invoice.html"><i class="ti-receipt"></i> <span>Teachers</span></a></li>
-
-                            
-                            
-                               
-                        </ul>
-                    </nav>
+                <div class="main-menu">
+                    @include('admin.partials.mainmenu')
                 </div>
             </div>
         </div>
@@ -62,7 +35,7 @@
         <div class="main-content">
             <!-- header area start -->
             <p>This is model for the Course</p>
-            
+
         </div>
         <!-- main content area end -->
         <!-- footer area start-->

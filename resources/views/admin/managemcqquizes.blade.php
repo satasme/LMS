@@ -15,7 +15,7 @@
     </div>
     <!-- preloader area end -->
     <!-- page container area start -->
-    
+
     <div class="page-container">
         <!-- sidebar menu area start -->
         <div class="sidebar-menu">
@@ -25,41 +25,10 @@
                     <!-- <a href="index.html"><img src="{{ asset('assets/images/icon/logo.png') }}" alt="logo"></a> -->
                 </div>
             </div>
-            <div class="main-menu">
-                <div class="menu-inner">
-                    <nav>
-                        <ul class="metismenu" id="menu">
-                        <li><a href="{{ url('admin/home') }}"><i class="ti-map-alt"></i> <span>Home</span></a></li>
-
-                            <li class="active">
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>Courses</span></a>
-                                <ul class="collapse">
-                                    <li><a href="{{ url('admin/home/courses') }}">Register Courses</a></li>
-                                    <li><a href="{{ url('admin/home/paper-categories') }}">All Paper categories</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Quiz
-                                    </span></a>
-                                <ul class="collapse">
-                                    <li><a href="{{ url('admin/home/mcqquizes') }}">Add Mcq Quize</a></li>
-                                    <li><a href="index3-horizontalmenu.html">Manage mcq quize</a></li>
-                                    <li><a href="">Add Filling Blanks Quize</a></li>
-
-                                    <li><a href="{{ url('Admin/short_answer_model') }}">Short answer Quizes</a></li>
-
-                                </ul>
-                            </li>
-                            <li><a href="invoice.html"><i class="ti-receipt"></i> <span>Instructors</span></a></li>
-                            <li><a href="invoice.html"><i class="ti-receipt"></i> <span>Teachers</span></a></li>
-
-                            
-                            
-                               
-                        </ul>
-                    </nav>
+                <div class="main-menu">
+                    @include('admin.partials.mainmenu')
                 </div>
-            </div>
+
         </div>
         <!-- sidebar menu area end -->
         <!-- main content area start -->
@@ -68,7 +37,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
-                            
+
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.html">Home</a></li>
                                 <li><span>courses</span></li>
@@ -92,20 +61,20 @@
             <div class="row" id="top-of-site">
             <div class="col-md-9"><p style="color:white;text-align:center;letter-spacing: 2.5px;">All Paper Questions</p></div>
             <div class="col-md-3">
-           
+
             </div>
             </div>
-            
-        
-
-        
-              
 
 
 
-            
+
+
+
+
+
+
 <div class="details">
- 
+
 <div class="form-group">
 
 <select class="form-control" id="search" name="correctop" class="form-control">
@@ -125,35 +94,35 @@
             <th>Marks Allocate</th>
             <th width="106px">options</th>
             <th width="202px">Action</th>
-    
+
         </tr>
       </thead>
         <tbody id="ajax-body">
- 
-       
-       
-        
+
+
+
+
      </tbody>
     </table>
 
             </div>
 
-            
+
             </div>
 
-        
 
 
-      
+
+
     </div>
   </div>
 </div>
-            
+
         </div>
         <!-- main content area end -->
         <!-- footer area start-->
 
-       
+
 
         <footer>
             <div class="footer-area">
@@ -164,7 +133,7 @@
     </div>
     <!-- page container area end -->
     <!-- offset area start -->
-   
+
     @section('js')
     <script src="{{ asset('vendor\unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
     <script>
@@ -213,7 +182,7 @@
      $(document).ready(function(){
 
         $('body').delegate('#managemcq #del','click',function(e){
-            
+
             $.ajaxSetup({
           headers: {
            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -222,7 +191,7 @@
             });
 
      var id=$(this).data('id');
-     
+
 
       $.post('{{ URL::to("admin/home/managemcq")}}',{id:id},function(data){
        console.log(data);
@@ -231,15 +200,15 @@
 
         });
 
-       
+
 
         });
 
 
-        
+
 
     </script>
-   
+
 </body>
 
 </html>

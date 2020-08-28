@@ -25,39 +25,10 @@
                         <!-- <a href="index.html"><img src="{{ asset('assets/images/icon/logo.png') }}" alt="logo"></a> -->
                     </div>
                 </div>
-                <div class="main-menu">
-                    <div class="menu-inner">
-                        <nav>
-                            <ul class="metismenu" id="menu">
-                                <li><a href="{{ url('admin/home') }}"><i class="ti-map-alt"></i> <span>Home</span></a></li>
 
-                                <li class="active">
-                                    <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>Courses</span></a>
-                                    <ul class="collapse">
-                                        <li><a href="{{ url('admin/home/courses') }}">Register Courses</a></li>
-                                        <li><a href="{{ url('admin/home/paper-categories') }}">All Paper categories</a></li>
-                                    </ul>
-                                </li>  
-                                <li>
-                                    <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Quiz
-                                        </span></a>
-                                    <ul class="collapse">
-                                        <li><a href="{{ url('admin/home/mcqquizes') }}">Add Mcq Quize</a></li>
-                                        <li><a href="index3-horizontalmenu.html">Manage mcq quize</a></li>
-                                        <li><a href="{{ url('admin/home/fillingblanks') }}">Add Filling Blanks Quize</a></li>
-                                        <li><a href="{{ url('admin/home/managefillingblanks') }}">Manage Filling Blanks Quizes</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="invoice.html"><i class="ti-receipt"></i> <span>Instructors</span></a></li>
-                                <li><a href="invoice.html"><i class="ti-receipt"></i> <span>Teachers</span></a></li>
-
-
-
-
-                            </ul>
-                        </nav>
+                    <div class="main-menu">
+                        @include('admin.partials.mainmenu')
                     </div>
-                </div>
             </div>
             <!-- sidebar menu area end -->
             <!-- main content area start -->
@@ -92,7 +63,7 @@
             <div class="row" id="top-of-site">
             <div class="col-md-9"><p style="color:white;text-align:center;letter-spacing: 2.5px;">Enter Filling Blanks Quiz Details</p></div>
             <div class="col-md-3">
-           
+
             </div>
             </div>
 </br></br>
@@ -105,21 +76,21 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-12 control-label" for="name">Quize Name</label>  
+  <label class="col-md-12 control-label" for="name">Quize Name</label>
   <div class="col-md-12">
   <select class="form-control papercatdropdown" name="quizid" >
   <option value=""></option>
-  
+
   @foreach($quizes as $quize)
 
 <option value="{{ $quize->id }}">{{ $quize->quizname}}</option>
 
 @endforeach
 </select>
-    
-  
+
+
 </select>
-    
+
   </div>
 </div>
 
@@ -136,36 +107,36 @@
         <label class="radio-inline">
           <input type="radio" onclick="blanks()" id="Single" value="Single" name="questiontype"required><b>Single<b>
         </label>
-        
-      </div>   
+
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-12 control-label" for="qsn">Question</label>  
+  <label class="col-md-12 control-label" for="qsn">Question</label>
   <div class="col-md-12">
   <textarea id="question" name="Question" placeholder="Question" class="form-control input-md"></textarea>
-    
+
   </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-12 control-label" for="right"></label>  
+  <label class="col-md-12 control-label" for="right"></label>
   <div class="col-md-12">
   <input id="right" name="marks" placeholder="Marks on right answer" class="form-control input-md" min="0" type="number">
-    
+
   </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-12 control-label" for="wrong"></label>  
+  <label class="col-md-12 control-label" for="wrong"></label>
   <div class="col-md-12">
   <input id="options" name="blankoptions" placeholder="No of Blanks" class="form-control input-md" min="0" type="number">
-    
+
   </div>
 </div>
 
@@ -182,15 +153,15 @@
 
 <div class="form-group">
   <label class="col-md-12 control-label" for=""></label>
-  <div class="col-md-12"> 
+  <div class="col-md-12">
     <input  type="submit" style="margin-left:45%" class="btn btn-primary" value="Submit" class="btn btn-primary"/>
   </div>
 </div>
 
 </fieldset>
 </form></div>
-            
-            
+
+
         </div>
         <!-- main content area end -->
         <!-- footer area start-->
@@ -216,19 +187,19 @@
     </div>
     <!-- page container area end -->
     <!-- offset area start -->
-   
+
     @section('js')
     <script src="{{ asset('assets/js/vendor/jquery-2.2.4.min.js') }}"></script>
     <script src="{{ asset('vendor\unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('vendor\unisharp/laravel-ckeditor/adapters/jquery.js') }}"></script>
     <script>
-    
+
     </script>
-    
+
     <script>
         CKEDITOR.replace('question');
         CKEDITOR.config.autoParagraph = false;
-        
+
     </script>
     <script>
     $(function() {
@@ -236,15 +207,15 @@
       $('#Single').click(function () {
         document.getElementById("options").disabled = true;
         $('#options').val(1);
-        
-               
+
+
               });
 
               $('#Paragraph').click(function () {
         document.getElementById("options").disabled = false;
-        
-        
-               
+
+
+
               });
 
     $('#question').ckeditor({
@@ -258,7 +229,7 @@
 
     <!-- offset area end -->
     <!-- jquery latest version -->
-   
+
     <!-- bootstrap 4 js -->
     <script src="{{ asset('assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>

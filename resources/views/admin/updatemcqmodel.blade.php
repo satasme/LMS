@@ -15,7 +15,7 @@
     </div>
     <!-- preloader area end -->
     <!-- page container area start -->
-    
+
     <div class="page-container">
         <!-- sidebar menu area start -->
         <div class="sidebar-menu">
@@ -26,39 +26,7 @@
                 </div>
             </div>
             <div class="main-menu">
-                <div class="menu-inner">
-                    <nav>
-                        <ul class="metismenu" id="menu">
-                        <li><a href="{{ url('admin/home') }}"><i class="ti-map-alt"></i> <span>Home</span></a></li>
-
-                            <li class="active">
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>Courses</span></a>
-                                <ul class="collapse">
-                                    <li><a href="{{ url('admin/home/courses') }}">Register Courses</a></li>
-                                    <li><a href="{{ url('admin/home/paper-categories') }}">All Paper categories</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Quiz
-                                    </span></a>
-                                <ul class="collapse">
-                                    <li><a href="{{ url('admin/home/mcqquizes') }}">Add Mcq Quize</a></li>
-                                    <li><a href="{{ url('admin/home/mcqquizes') }}">Add Filling Blanks Quize</a></li>
-                                    <li><a href="index3-horizontalmenu.html">Manage mcq quize</a></li>
-
-                                    <li><a href="{{ url('Admin/short_answer_model') }}">Short answer Quizes</a></li>
-
-                                </ul>
-                            </li>
-                            <li><a href="invoice.html"><i class="ti-receipt"></i> <span>Instructors</span></a></li>
-                            <li><a href="invoice.html"><i class="ti-receipt"></i> <span>Teachers</span></a></li>
-
-                            
-                            
-                               
-                        </ul>
-                    </nav>
-                </div>
+                @include('admin.partials.mainmenu')
             </div>
         </div>
         <!-- sidebar menu area end -->
@@ -68,7 +36,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
-                            
+
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.html">Home</a></li>
                                 <li><span>courses</span></li>
@@ -90,15 +58,15 @@
             </div>
 
             <div id="delete-opt" class="course-registration-form">
-            
+
             <h4 style="padding-left: 8%; padding-top:2%;font-family:Arial;font-weight:600 !important;">Delete a option</h4>
             <a class="close" href="#">&times;</a>
             </br>
             @php
             $z=1;
             @endphp
-            
-            
+
+
               <form class="add-form" method="post" action="{{ route('mcqquizes.update',$qid) }}" enctype='multipart/form-data' >
               @csrf
               @method('PUT')
@@ -115,7 +83,7 @@
                     </select>
            </div>
   <button type="submit" class="btn btn-primary mb-2">Delete this option</button>
- 
+
                </form>
 
 
@@ -134,9 +102,9 @@
 </br></br>
             <div class="row">
 
-           
 
- <div class="col-md-3"></div><div class="col-md-6"> 
+
+ <div class="col-md-3"></div><div class="col-md-6">
  @php
  $message = Session::get('message');
  if($message){
@@ -185,13 +153,13 @@ $z++;
 
   </form>
   </div>
-            
-            
+
+
         </div>
         <!-- main content area end -->
         <!-- footer area start-->
 
-       
+
 
         <footer>
             <div class="footer-area">
@@ -202,7 +170,7 @@ $z++;
     </div>
     <!-- page container area end -->
     <!-- offset area start -->
-   
+
     @section('js')
     <script src="{{ asset('vendor\unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
     <script>

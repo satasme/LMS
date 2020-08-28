@@ -49,6 +49,7 @@ class examController extends Controller
         $request->validate([
             'examcode' => 'required',
             'Exam_title' => 'required',
+            'Exam_time' => 'required',
             'description' => 'required',
             'icon' => 'required',
             'courseid' => 'required',
@@ -63,6 +64,7 @@ class examController extends Controller
         $form_data = array(
             'examcode' => $request->examcode,
             'Exam_title' => $request->Exam_title,
+            'Exam_time' => $request->Exam_time,
             'description' => $request->description,
             'icon' => $new_name,
             'courseid' => $request->courseid,

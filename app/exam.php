@@ -11,6 +11,6 @@ class exam extends Model
 
 
     protected $fillable = [
-        'examcode','Exam_title','description','courseid','icon','coursetestid','coursename','coursetestname'
+        'examcode','Exam_title','Exam_time','description','courseid','icon','coursetestid','coursename','coursetestname'
     ];
 }
