@@ -88,6 +88,8 @@ Route::post('admin/home/mcqmanage','managemcqController@remove')->name('mcqmanag
 
 
 
+
+
 Route::get('admin/home','AdminController@index');
 Route::get('admin/home/courses','CourseController@index');
 Route::get('admin/home/paper-categories','PaperCategoryController@index');
@@ -130,3 +132,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('Admin/short_answer_model','ShortAnswerController@index');
 Route::post('/dynamic_field','ShortAnswerController@insert');
 
+
+Route::get('get_quizzes_of_course_course_set_exam_paper_cat_id/{course_id}/{course_set_id}/{exam_id}/{paper_cat_id}','QuizController@get_quizzes_of_course_course_set_exam_paper_cat_id');
+Route::get('exam/get_exam_of_course_course_set_id/{course_id}/{course_set_id}','examController@get_exam_of_course_course_set_id');
+
+Route::get('/student-exam','ListeningQuestionsAnswersController@index');
+//Route::get('exam_index','ListeningQuestionsAnswersController@test');
+//Route::get('exams','ListeningQuestionsAnswersController@exam_index')->name('student.mcq_question');
+//Route::get('mcq_question/{course_id}/{course_test_id}/{exam_id}/{papercat_id}','ListeningQuestionsAnswersController@getPaperUi')->name('student.mcq_question');
+Route::get('mcq_question','ListeningQuestionsAnswersController@getPaperUi')->name('student.mcq_question');
+
+Route::post('mcq-submit','ListeningQuestionsAnswersController@create');
+Route::post('writing-submit','ListeningQuestionsAnswersController@createWriting');
+Route::post('listening-submit','ListeningQuestionsAnswersController@createListening');
+Route::post('speaking-submit','ListeningQuestionsAnswersController@createSpeaking');

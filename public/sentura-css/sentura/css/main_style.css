@@ -1,0 +1,50 @@
+.paper-card{
+  cursor: pointer;
+}
+
+.nav-cursor{
+  cursor: pointer;
+}
+
+#timerId{
+  color: white;
+}
+
+#cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.80;
+  background: #aaa;
+  z-index: 10;
+  display: none;
+}
+
+#countdown{
+  margin-left: 37px;
+  margin-top: 20px;
+}
+
+.circle{
+  height: 100px;
+  width: 100px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  border: 2px solid black;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, 250%)
+}
+
+
+.submit-btn-fixed{
+    position: fixed;
+    right: 100px;
+    top: 100px;
+}
